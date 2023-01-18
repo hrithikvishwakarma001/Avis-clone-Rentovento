@@ -24,20 +24,24 @@ export default function InputDateRange() {
 	return (
 		<>
 			{/* <Button onClick={onOpen}>Open Modal</Button> */}
-			<Input
+			<Center
 				onClick={onOpen}
-				type={"text"}
-				bg
-				value={sDate}
+				w={"36%"}
+				bg={useColorModeValue("white", "#2b2a33")}
+				borderLeft={"1px solid #5e5d64"}
+				borderRight={"1px solid #5e5d64"}
 				h={"50px"}
-				borderRadius={"0"}
-			/>
-			<AiFillCalendar
-				size={"10%"}
-				borderRadius={"50%"}
-				color={useColorModeValue("black", "white")}
-				onClick={onOpen}
-			/>
+				display='flex'
+				alignItems={"center"}
+				// color={useColorModeValue("black", "white")}
+				pl={8}>
+				{sDate}
+				<AiFillCalendar
+					size={"65%"}
+					borderradius={"50%"}
+					color={useColorModeValue("black", "white")}
+				/>
+			</Center>
 			<Modal
 				isCentered
 				onClose={onClose}

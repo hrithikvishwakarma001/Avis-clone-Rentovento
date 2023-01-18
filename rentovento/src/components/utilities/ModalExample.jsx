@@ -57,7 +57,11 @@ export default function ModalExample() {
 				isOpen={isOpen}
 				onClose={onClose}>
 				<ModalOverlay />
-				<ModalContent pt='10' pl='5' pr='5'>
+				<ModalContent
+					pt='10'
+					pl='5'
+					pr='5'
+					bg={useColorModeValue("white", "black")}>
 					<ModalHeader>Login to your rentovento account</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody mb='2' spacing={4}>
@@ -67,6 +71,7 @@ export default function ModalExample() {
 								h='50'
 								ref={initialRef}
 								placeholder='Username/Wizard Number'
+								bg
 							/>
 						</FormControl>
 
@@ -75,6 +80,7 @@ export default function ModalExample() {
 								type={"password"}
 								h='50'
 								placeholder='Password (Case Sensitive)'
+								bg
 							/>
 						</FormControl>
 
@@ -91,24 +97,22 @@ export default function ModalExample() {
 							<FormLabel>Remember me</FormLabel>
 							<Checkbox></Checkbox>
 						</HStack>
-						<Box
-							fontSize={"sm"}
-							>
+						<Box fontSize={"sm"}>
 							{chunks.map(({ match, text }) => {
 								if (!match) return text;
-								return <Mark color='red'>{text}</Mark>;
+								return <Mark color='red.500'>{text}</Mark>;
 							})}
 						</Box>
 						<Center mt='5' mb='5'>
 							<Button
 								w='100%'
-								colorScheme='red'
+								bg={useColorModeValue("red.500", "red.600")}
 								variant='solid'
 								onClick={onClose}>
 								LOG IN
 							</Button>
 						</Center>
-						<Flex justifyContent='space-between' color={"red"}>
+						<Flex justifyContent='space-between' color={"#e53e3e"}>
 							<FormLabel>Forgot username?</FormLabel>
 							<Center>
 								<Box borderLeft='2px solid gray'>&nbsp;</Box>
@@ -134,7 +138,7 @@ export default function ModalExample() {
 							<NavLink>Need an account ? </NavLink>
 							<NavLink
 								to='/login'
-								style={{ color: "red" }}
+								style={{ color: "#e53e3e" }}
 								onClick={onClose}>
 								&nbsp;Create new one
 							</NavLink>
