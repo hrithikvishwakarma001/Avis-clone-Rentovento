@@ -1,15 +1,16 @@
-import { Button, useColorMode } from '@chakra-ui/react'
-import { FaMoon, FaSun } from "react-icons/fa";
 import './App.css'
+import AllRoutes from './components/AllRoutes';
+import Navbar from './components/Navbar';
 
 function App() {
-  const { colorMode, toggleColorMode } = useColorMode()
-  const isDark = colorMode === 'dark'
+  // const { colorMode, toggleColorMode } = useColorMode()
+  // const isDark = colorMode === 'dark'
+
   return (
 		<div className='App'>
-			<Button onClick={toggleColorMode} >
-				{!isDark ? <FaSun /> : <FaMoon />}
-			</Button>
+			<Navbar />
+			<AllRoutes />
+   
 		</div>
   );
 }
