@@ -4,11 +4,14 @@ import App from "./App";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import DateProviderContext from "./context/DateProviderContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<ChakraProvider>
-    <ColorModeScript initialColorMode="dark" />
+		<ColorModeScript initialColorMode='dark' />
 		<BrowserRouter>
-			<App />
+			<DateProviderContext>
+				<App />
+			</DateProviderContext>
 		</BrowserRouter>
 	</ChakraProvider>
 );
