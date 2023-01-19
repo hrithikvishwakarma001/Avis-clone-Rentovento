@@ -54,7 +54,8 @@ const MidHomePage = () => {
 	return (
 		<div>
 			<Center
-			  display={{ base: "none", md: "none", sm: "none",lg:"flex" }}
+				bg={useColorModeValue("gray.50", "black")}
+				display={{ base: "none", md: "none", sm: "none", lg: "flex" }}
 				width={"80%"}
 				margin={"auto"}
 				marginTop={"2rem"}
@@ -66,9 +67,14 @@ const MidHomePage = () => {
 				objectFit={"cover"}
 				backgroundSize='cover'>
 				<Stack
-					width={{ base: "100%", md: "100%", sm: "100%",lg:"80%" }}
+					width={{ base: "100%", md: "100%", sm: "100%", lg: "80%" }}
 					ml={"35rem"}
-          display={{ base: "none", md: "none", sm: "none",lg:"flex" }}
+					display={{
+						base: "none",
+						md: "none",
+						sm: "none",
+						lg: "flex",
+					}}
 					color={useColorModeValue("black", "black")}
 					spacing={5}>
 					<Text as='b' fontSize='2xl' forntWeight='bold'>
@@ -90,7 +96,12 @@ const MidHomePage = () => {
 				<Flex
 					alignItems={"center"}
 					justifyContent={"space-between"}
-          display={{ base: "none", md: "block", sm: "block",lg:"flex" }}
+					display={{
+						base: "none",
+						md: "block",
+						sm: "block",
+						lg: "flex",
+					}}
 					width={"99.5%"}
 					margin={"auto"}>
 					<Stack>
