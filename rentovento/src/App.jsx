@@ -10,6 +10,8 @@ function App() {
   return (
 		<Box className='App'
     bg={useColorModeValue("white", "black")}
+    // w='1785px'
+    margin={'auto'}
     >
 			<Navbar />
 			<AllRoutes />
