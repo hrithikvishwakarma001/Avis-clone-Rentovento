@@ -37,7 +37,7 @@ export default function InputDateRange() {
 				pl={8}>
 				{sDate}
 				<AiFillCalendar
-					size={"65%"}
+					size={"50%"}
 					borderradius={"50%"}
 					color={useColorModeValue("black", "white")}
 				/>
@@ -47,10 +47,9 @@ export default function InputDateRange() {
 				onClose={onClose}
 				isOpen={isOpen}
 				motionPreset='slideInBottom'
-				bg={useColorModeValue("gray.100", "black")}
 				size='5xl'>
 				<ModalOverlay />
-				<ModalContent>
+				<ModalContent bg={useColorModeValue("white", "black")}>
 					<ModalHeader fontSize={"lg"}>
 						<Badge colorScheme='purple'>
 							Start Date {` : ${sDate}`}
