@@ -51,8 +51,13 @@ export default function Navbar() {
 						spacing={5}
 						fontSize={"13px"}
 						position={"relative"}
-						left={220}>
-						{/* on mouse over open menu */}
+						left={220}
+						display={{
+							base: "none",
+							sm: "none",
+							md: "none",
+							lg: "block",
+						}}>
 						<Menu>
 							<MenuButton>RESERVATIONS</MenuButton>
 							<Portal>
@@ -155,7 +160,13 @@ export default function Navbar() {
 						fontSize={"13px"}
 						position={"relative"}
 						left={59}>
-						<Menu>
+						<Menu
+							display={{
+								base: "none",
+								sm: "none",
+								md: "none",
+								lg: "block",
+							}}>
 							<MenuButton>AVIS PREFERRED</MenuButton>
 						</Menu>
 						<NavLink to='/login'>

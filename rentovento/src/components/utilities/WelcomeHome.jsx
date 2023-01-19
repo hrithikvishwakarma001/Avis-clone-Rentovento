@@ -13,16 +13,122 @@ import {
 	MenuOptionGroup,
 	Select,
 	Box,
+	Divider,
+	Tag,
+	color,
 } from "@chakra-ui/react";
 import InputDateRange from "./InputDateRange";
 import React from "react";
 import { DateContext } from "../../context/DateProviderContext";
-import { AiFillCalendar } from "react-icons/ai";
+import { AiFillCalendar, AiOutlineInfoCircle } from "react-icons/ai";
 export default function WelcomeHome() {
 	const { sDate, eDate } = React.useContext(DateContext);
-	console.log("frome welcom page", sDate, eDate);
+	// console.log("frome welcom page", sDate, eDate);
 	// console.log('frome welcom page',dateRange)
-  
+	const [noneState, setnoneState] = React.useState(true);
+	// console.log('noneState',noneState)
+
+	const country = [
+		"Afghanistan",
+		"Albania",
+		"Algeria",
+		"Andorra",
+		"Angola",
+		"Antigua and Barbuda",
+		"Argentina",
+		"Armenia",
+		"Australia",
+		"Austria",
+		"Azerbaijan",
+		"Bahamas",
+		"Bahrain",
+		"Bangladesh",
+		"Barbados",
+		"Belarus",
+		"Belgium",
+		"Belize",
+		"Benin",
+		"Bhutan",
+		"Bolivia",
+		"Bosnia and Herzegovina",
+		"Botswana",
+		"Brazil",
+		"Brunei",
+		"Bulgaria",
+		"Burkina Faso",
+		"Burundi",
+		"Cabo Verde",
+		"Cambodia",
+		"Cameroon",
+		"Canada",
+		"Central African Republic (CAR)",
+		"Chad",
+		"Chile",
+		"China",
+		"Colombia",
+		"Comoros",
+		"Democratic Republic of the Congo",
+		"Republic of the Congo",
+		"Costa Rica",
+		"Cote d'Ivoire",
+		"Croatia",
+		"Cuba",
+		"Cyprus",
+		"Czech Republic",
+		"Denmark",
+		"Djibouti",
+		"Dominica",
+		"Dominican Republic",
+		"Ecuador",
+		"Egypt",
+		"El Salvador",
+		"Equatorial Guinea",
+		"Eritrea",
+		"Estonia",
+		"Eswatini (fmr. Swaziland)",
+		"Ethiopia",
+		"Fiji",
+		"Finland",
+		"France",
+		"Gabon",
+		"Gambia",
+		"Georgia",
+		"Germany",
+		"Ghana",
+		"Greece",
+		"Grenada",
+		"Guatemala",
+		"Guinea",
+		"Guinea-Bissau",
+		"Guyana",
+		"Haiti",
+		"Honduras",
+		"Hungary",
+		"Iceland",
+		"India",
+		"Indonesia",
+		"Iran",
+		"Iraq",
+		"Ireland",
+	];
+	const initialState = {
+		pickAdrees: "",
+		dropAddress: "",
+		pickTime: "",
+		dropTime: "",
+		country: "",
+		age: "",
+	};
+	const [state, setstate] = React.useState(initialState);
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setstate({ ...state, [name]: value });
+	};
+	const handleClick = () => {
+		console.log("state", state);
+		setnoneState((prev) => !prev);
+		setstate(initialState);
+	};
 	return (
 		<Container maxW={"100%"} bg='#b20023'>
 			<Stack
@@ -52,16 +158,24 @@ export default function WelcomeHome() {
 					>
 						<HStack spacing={"-0.5"}>
 							<Input
+								value={state.pickAdrees}
+								name='pickAdrees'
+								onChange={handleChange}
 								type={"text"}
 								placeholder='Enter your pick-up location or zip code'
 								bg
 								h={"50px"}
 								borderRadius={"0"}
+								onClick={() => setnoneState(false)}
 							/>
 							<InputDateRange />
 							<Select
-								placeholder='Select option'
-								bg
+								name='pickTime'
+								onChange={handleChange}
+								fontSize={"14px"}
+								placeholder='Select time'
+								bg={useColorModeValue("white", "#2b2a33")}
+								border={"none"}
 								maxW={"20%"}
 								h={"50px"}
 								borderRadius={"0"}>
@@ -104,8 +218,14 @@ export default function WelcomeHome() {
 								<option>11:30 PM</option>
 							</Select>
 						</HStack>
-						<HStack spacing={"-0.5"}>
+						<HStack
+							spacing={"-0.5"}
+							// display={{ base: "none", sm: "none", md: "none", lg: "flex" }}
+							display={noneState ? "none" : "flex"}>
 							<Input
+								value={state.dropAddress}
+								name='dropAddress'
+								onChange={handleChange}
 								type={"text"}
 								placeholder='Return to same location'
 								bg
@@ -124,14 +244,19 @@ export default function WelcomeHome() {
 								pl={8}>
 								{eDate}
 								<AiFillCalendar
-									size={"65%"}
+									size={"50%"}
 									borderradius={"50%"}
 									color={useColorModeValue("black", "white")}
 								/>
 							</Center>
+
 							<Select
-								placeholder='Select option'
-								bg
+								name='dropTime'
+								onChange={handleChange}
+								fontSize={"14px"}
+								border={"none"}
+								placeholder='Select time'
+								bg={useColorModeValue("white", "#2b2a33")}
 								maxW={"20%"}
 								h={"50px"}
 								borderRadius={"0"}>
@@ -174,8 +299,116 @@ export default function WelcomeHome() {
 								<option>11:30 PM</option>
 							</Select>
 						</HStack>
-						<HStack></HStack>
+						<HStack>
+							<Stack
+								pl={4}
+								w={"20%"}
+								direction={"row"}
+								align={"center"}
+								bg={useColorModeValue("white", "#2b2a33")}>
+								<AiOutlineInfoCircle
+									size={"20px"}
+									bg={useColorModeValue("white", "gray.100")}
+								/>
+								<Select
+									name='age'
+									onChange={handleChange}
+									border={"none"}
+									placeholder='age:&nbsp;&nbsp; 25+'
+									bg={useColorModeValue("white", "#2b2a33")}
+									maxW={"80%"}
+									h={"40px"}
+									borderRadius={"0"}
+									fontSize={"14px"}>
+									<option>25+</option>
+									<option>24</option>
+									<option>23</option>
+									<option>22</option>
+									<option>21</option>
+									<option>20</option>
+									<option>19</option>
+									<option>18</option>
+								</Select>
+							</Stack>
+							<Stack
+								pl={4}
+								w={"30%"}
+								direction={"row"}
+								align={"center"}
+								bg={useColorModeValue("white", "#2b2a33")}>
+								<AiOutlineInfoCircle
+									size={"20px"}
+									bg={useColorModeValue("white", "gray.100")}
+								/>
+								<Select
+									name='country'
+									onChange={handleChange}
+									border={"none"}
+									placeholder='Residency: &nbsp;&nbsp; USA'
+									bg={useColorModeValue("white", "#2b2a33")}
+									maxW={"80%"}
+									h={"40px"}
+									borderRadius={"0"}
+									fontSize={"14px"}>
+									{country.map((country) => {
+										return (
+											<option
+												key={country}
+												value={country}>
+												{country}
+											</option>
+										);
+									})}
+								</Select>
+							</Stack>
+
+								<Button
+									isLoading={noneState ? false : true}
+									loadingText='Wizard Number *'
+									bg={useColorModeValue("white", "#2b2a33")}
+									variant='outline'
+									spinnerPlacement='end'
+									borderradius={"none"}>
+									Wizard Number *
+								</Button>
+								<Button
+									isLoading={noneState ? false : true}
+									loadingText='Discounts Code *'
+									bg={useColorModeValue("white", "#2b2a33")}
+									variant='outline'
+									spinnerPlacement='end'
+									borderradius={"none"}>
+									Discounts Code *
+								</Button>
+								<Button
+									isLoading={noneState ? false : true}
+									loadingText='Vehicle Type *'
+									bg={useColorModeValue("white", "#2b2a33")}
+									variant='outline'
+									spinnerPlacement='end'
+									borderradius={"none"}>
+									Vehicle Type *
+								</Button>
+						</HStack>
+						<Flex justifyContent='flex-end'>
+							<Tag bg={useColorModeValue("white", "#2b2a33")}>
+								* Optional
+							</Tag>
+						</Flex>
 					</Stack>
+				</Center>
+				<Center
+					borderRadius='lg'
+					maxW={{ base: "100%", sm: "100%", md: "100%", lg: "100%" }}
+					m='auto'>
+					<Button
+						onClick={handleClick}
+						bg={useColorModeValue("white", "black")}
+						w='15rem'
+						h='3rem'
+						borderRadius='none'>
+						SELECT MY CAR
+					</Button>
 				</Center>
 			</Stack>
 		</Container>

@@ -48,13 +48,13 @@ const DateRangePickerComp = () => {
   setSDate(format(range[0].startDate, "dd/MM/yyyy"));
   setEDate(format(range[0].endDate, "dd/MM/yyyy"));
 
-	console.log(
-    "from dateRangePickerComp",
-		`${format(range[0].startDate, "dd/MM/yyyy")} to ${format(
-			range[0].endDate,
-			"dd/MM/yyyy"
-		)}`
-	);
+	// console.log(
+  //   "from dateRangePickerComp",
+	// 	`${format(range[0].startDate, "dd/MM/yyyy")} to ${format(
+	// 		range[0].endDate,
+	// 		"dd/MM/yyyy"
+	// 	)}`
+	// );
 	return (
 		<div className='calendarWrap'>
 			{/* <input

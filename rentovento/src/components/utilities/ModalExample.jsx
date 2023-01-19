@@ -100,7 +100,7 @@ export default function ModalExample() {
 						<Box fontSize={"sm"}>
 							{chunks.map(({ match, text }) => {
 								if (!match) return text;
-								return <Mark color='red.500'>{text}</Mark>;
+								return <Mark key={text} color='red.500'>{text}</Mark>;
 							})}
 						</Box>
 						<Center mt='5' mb='5'>
