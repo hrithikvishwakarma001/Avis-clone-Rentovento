@@ -77,10 +77,10 @@ const MidHomePage = () => {
 					}}
 					color={useColorModeValue("black", "black")}
 					spacing={5}>
-					<Text as='b' fontSize='2xl' forntWeight='bold'>
+					<Text as='b' fontSize='2xl' forntweight='bold'>
 						Get OUR BEST RATES when you book ar Rentovento.com
 					</Text>
-					<Text as='b' fontSize='xl' forntWeight='bold'>
+					<Text as='b' fontSize='xl' forntweight='bold'>
 						PLUS save up to 35% when you pay now!
 					</Text>
 					<Button
@@ -257,11 +257,11 @@ const MidHomePage = () => {
 						ml={"53.9rem"}
 						// color={useColorModeValue("black", "white")}
 						spacing={5}>
-						<Text as='b' fontSize='2xl' forntWeight='bold'>
+						<Text as='b' fontSize='2xl' forntweight='bold'>
 							BUY A CERTIFIED PRE-OWNED CAR WITH AVIS CAR SALES
 							AND SAVE AN AVERAGE OF $2500*
 						</Text>
-						<Text as='b' fontSize='xl' forntWeight='bold'>
+						<Text as='b' fontSize='xl' forntweight='bold'>
 							Find your car today.
 						</Text>
 						<Button

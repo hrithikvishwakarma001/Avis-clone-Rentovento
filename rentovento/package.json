@@ -20,7 +20,11 @@
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.6.2"
+    "react-loading-skeleton": "^3.1.0",
+    "react-router-dom": "^6.6.2",
+    "react-simple-image-slider": "^2.4.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

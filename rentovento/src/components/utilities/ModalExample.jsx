@@ -32,28 +32,28 @@ import { AiOutlineAmazon } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 export default function ModalExample() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-
-	const initialRef = React.useRef(null);
-	const finalRef = React.useRef(null);
 	const chunks = useHighlight({
 		text: "This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service apply. ",
 		query: ["Privacy Policy", "Service apply."],
 	});
-	// const responsive = {
-	// 	base:"100%",
-	// 	sm:"100%",
-	// 	md:"100%",
-	// 	lg:"100%",
-	// 	xl:"100%",
-	// 	"2xl":"100%",
-	// }
 
+	const initialState = {
+		username: "",
+		password: "",
+		checkbox: false,
+	};
+
+	const [state, setState] = React.useState(initialState);
+  const handlClick = () => {
+		console.log(state)
+		onClose()
+	}
 	return (
 		<>
 			<MenuButton onClick={onOpen}>LOGIN</MenuButton>
 			<Modal
-				initialFocusRef={initialRef}
-				finalFocusRef={finalRef}
+				// initialFocusRef={initialRef}
+				// finalFocusRef={finalRef}
 				isOpen={isOpen}
 				onClose={onClose}>
 				<ModalOverlay />
@@ -69,9 +69,14 @@ export default function ModalExample() {
 							<Input
 								type={"text"}
 								h='50'
-								ref={initialRef}
 								placeholder='Username/Wizard Number'
 								bg
+								onChange={(e) => {
+									setState({
+										...state,
+										username: e.target.value,
+									});
+								}}
 							/>
 						</FormControl>
 
@@ -81,6 +86,12 @@ export default function ModalExample() {
 								h='50'
 								placeholder='Password (Case Sensitive)'
 								bg
+								onChange={(e) => {
+									setState({
+										...state,
+										password: e.target.value,
+									});
+								}}
 							/>
 						</FormControl>
 
@@ -95,12 +106,22 @@ export default function ModalExample() {
 								sm: "space-between",
 							}}>
 							<FormLabel>Remember me</FormLabel>
-							<Checkbox></Checkbox>
+							<Checkbox
+								onChange={(e) => {
+									setState({
+										...state,
+										checkbox: e.target.checked,
+									});
+								}}></Checkbox>
 						</HStack>
 						<Box fontSize={"sm"}>
 							{chunks.map(({ match, text }) => {
 								if (!match) return text;
-								return <Mark key={text} color='red.500'>{text}</Mark>;
+								return (
+									<Mark key={text} color='red.500'>
+										{text}
+									</Mark>
+								);
 							})}
 						</Box>
 						<Center mt='5' mb='5'>
@@ -108,7 +129,7 @@ export default function ModalExample() {
 								w='100%'
 								bg={useColorModeValue("red.500", "red.600")}
 								variant='solid'
-								onClick={onClose}>
+								onClick={handlClick}>
 								LOG IN
 							</Button>
 						</Center>

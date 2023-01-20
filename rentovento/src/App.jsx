@@ -11,6 +11,7 @@ function App() {
 		<Box className='App'
     bg={useColorModeValue("white", "black")}
     // w='1785px'
+    // h='100%'
     margin={'auto'}
     >
 			<Navbar />
