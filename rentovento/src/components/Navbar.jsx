@@ -18,10 +18,12 @@ import {
 	Image,
 	Portal,
 	Modal,
+	Badge,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 import ModalExample from "./utilities/ModalExample";
+import Live from "./utilities/Live";
 
 export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -130,7 +132,14 @@ export default function Navbar() {
 						</Menu>
 						<NavLink to='/Inventory'>
 							<Menu>
-								<MenuButton>CAR SALE</MenuButton>
+								<MenuButton>
+									<Flex>
+										<Badge colorScheme='purple'>
+											CAR SALE
+										</Badge>
+										<Live />
+									</Flex>
+								</MenuButton>
 							</Menu>
 						</NavLink>
 						<Menu>

@@ -21,6 +21,8 @@ import InputDateRange from "./InputDateRange";
 import React from "react";
 import { DateContext } from "../../context/DateProviderContext";
 import { AiFillCalendar, AiOutlineInfoCircle } from "react-icons/ai";
+import { useToast } from "@chakra-ui/react";
+
 export default function WelcomeHome() {
 	const { sDate, eDate } = React.useContext(DateContext);
 	// console.log("frome welcom page", sDate, eDate);
@@ -124,10 +126,35 @@ export default function WelcomeHome() {
 		const { name, value } = e.target;
 		setstate({ ...state, [name]: value });
 	};
+	const toast = useToast();
 	const handleClick = () => {
-		console.log("state", state);
-		setnoneState((prev) => !prev);
-		setstate(initialState);
+		if (
+			state.pickAdrees === "" ||
+			state.dropAddress === "" ||
+			state.pickTime === "" ||
+			state.dropTime === "" ||
+			state.country === "" ||
+			state.age === ""
+		) {
+			toast({
+				title: " Enter all fields.",
+				description: "All fields are required",
+				status: "error",
+				duration: 9000,
+				isClosable: true,
+			});
+		} else {
+			console.log("state", state);
+			setnoneState((prev) => !prev);
+			setstate(initialState);
+			toast({
+				title: "Thank you for your booking.",
+				description: "We will contact you soon.",
+				status: "success",
+				duration: 9000,
+				isClosable: true,
+			});
+		}
 	};
 	return (
 		<Container maxW={"100%"} bg='#b20023'>
@@ -362,33 +389,33 @@ export default function WelcomeHome() {
 								</Select>
 							</Stack>
 
-								<Button
-									isLoading={noneState ? false : true}
-									loadingText='Wizard Number *'
-									bg={useColorModeValue("white", "#2b2a33")}
-									variant='outline'
-									spinnerPlacement='end'
-									borderradius={"none"}>
-									Wizard Number *
-								</Button>
-								<Button
-									isLoading={noneState ? false : true}
-									loadingText='Discounts Code *'
-									bg={useColorModeValue("white", "#2b2a33")}
-									variant='outline'
-									spinnerPlacement='end'
-									borderradius={"none"}>
-									Discounts Code *
-								</Button>
-								<Button
-									isLoading={noneState ? false : true}
-									loadingText='Vehicle Type *'
-									bg={useColorModeValue("white", "#2b2a33")}
-									variant='outline'
-									spinnerPlacement='end'
-									borderradius={"none"}>
-									Vehicle Type *
-								</Button>
+							<Button
+								isLoading={noneState ? false : true}
+								loadingText='Wizard Number *'
+								bg={useColorModeValue("white", "#2b2a33")}
+								variant='outline'
+								spinnerPlacement='end'
+								borderradius={"none"}>
+								Wizard Number *
+							</Button>
+							<Button
+								isLoading={noneState ? false : true}
+								loadingText='Discounts Code *'
+								bg={useColorModeValue("white", "#2b2a33")}
+								variant='outline'
+								spinnerPlacement='end'
+								borderradius={"none"}>
+								Discounts Code *
+							</Button>
+							<Button
+								isLoading={noneState ? false : true}
+								loadingText='Vehicle Type *'
+								bg={useColorModeValue("white", "#2b2a33")}
+								variant='outline'
+								spinnerPlacement='end'
+								borderradius={"none"}>
+								Vehicle Type *
+							</Button>
 						</HStack>
 						<Flex justifyContent='flex-end'>
 							<Tag bg={useColorModeValue("white", "#2b2a33")}>

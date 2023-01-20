@@ -8,13 +8,15 @@ import {
 	Flex,
 	Tag,
 	useColorModeValue,
-	Heading,
-  Image,
-
-  
+	Image,
 } from "@chakra-ui/react";
-import { CheckCircleIcon } from "@chakra-ui/icons";
-
+import {
+	FaFacebookF,
+	FaInstagram,
+	FaLinkedinIn,
+	FaTwitter,
+	FaYoutube,
+} from "react-icons/fa";
 export default function Footer() {
 	return (
 		<Box
@@ -125,8 +127,20 @@ export default function Footer() {
 						<Link href={"#"}>Fraud & Scams</Link>
 					</Stack>
 				</SimpleGrid>
+				<Flex
+					width={"full"}
+					align={"center"}
+					justify={"flex-end"}
+					gap={6}
+					fontSize={"2xl"}>
+					<FaFacebookF />
+					<FaTwitter />
+					<FaInstagram />
+					<FaYoutube />
+					<FaLinkedinIn />
+				</Flex>
 			</Container>
-			<Box py={10}>
+			<Box p='10'>
 				<Flex
 					align={"center"}
 					_before={{
