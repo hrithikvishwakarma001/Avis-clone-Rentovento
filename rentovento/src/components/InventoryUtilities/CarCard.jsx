@@ -111,7 +111,7 @@ export default function CardCard({ images,color,title,price,miles }) {
 							<Stat>
 								<StatLabel>Miles</StatLabel>
 								<StatNumber>{miles}</StatNumber>
-								<StatHelpText>
+								<StatHelpText mt={1}>
 									<StatArrow type='increase' />
 									{(parseInt(price) / 3).toFixed(2)}%
 								</StatHelpText>
@@ -124,11 +124,15 @@ export default function CardCard({ images,color,title,price,miles }) {
 									fontSize={"xl"}>
 									{newColor}
 								</StatNumber>
-								<StatHelpText>
+								<StatHelpText
+								display={"flex"}
+								alignItems={"center"}
+								pt={2}
+								>
 									<StatArrow type='decrease' />
 									{(parseInt(price) / 7).toFixed(2)}%
 									<Tag
-										size='md'
+										size='sm'
 										colorScheme='green'
 										ml='3'
 										>
