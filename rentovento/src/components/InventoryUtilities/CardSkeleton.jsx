@@ -3,8 +3,6 @@ import {
 	Center,
 	HStack,
 	Skeleton,
-	SkeletonCircle,
-	SkeletonText,
 	Stack,
 } from "@chakra-ui/react";
 const CardSkeleton = () => {

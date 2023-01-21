@@ -49,7 +49,6 @@ export default function Live() {
 					as='div'
 					h='10px'
 					w='10px'
-					ml={1}
 					bgColor={activeColor}
 					borderRadius='50%'
 					_before={{
