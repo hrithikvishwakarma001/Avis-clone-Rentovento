@@ -34,7 +34,7 @@ export default function Navbar() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { user, auth } = useContext(DateContext);
 
-	console.log(user, auth);
+	// console.log(user, auth);
 	return (
 		<>
 			<Box bg={useColorModeValue("gray.100", "black")} p={1}>

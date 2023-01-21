@@ -102,6 +102,7 @@ const CarCart = () => {
 				{state?.data.map((car) => (
 					<CardCard
 						key={car.id}
+						id={car.id}
 						images={car.image}
 						title={car.title}
 						price={car.price}
