@@ -20,6 +20,7 @@ import {
 import CarSlider from "./CarSlider";
 import CartQuickLook from "./CartQuickLook";
 import React from "react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 const IMAGE =
 	"https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3459.jpg?w=360";
 
@@ -32,9 +33,6 @@ export default function CardCard({ images,color,title,price,miles }) {
     imgArr.push(x.side)
   }
 
-
-
-//  console.log(title)
  let newTitle = title.trim()
  let str = ''
  for(let i=0;i<newTitle.length;i++){
@@ -62,7 +60,7 @@ export default function CardCard({ images,color,title,price,miles }) {
 				p={6}
 				maxW={"330px"}
 				w={"full"}
-				bg={useColorModeValue("white", "gray.900")}
+				bg={useColorModeValue("white", "black")}
 				boxShadow={"2xl"}
 				rounded={"lg"}
 				pos={"relative"}
@@ -89,9 +87,11 @@ export default function CardCard({ images,color,title,price,miles }) {
 							filter: "blur(20px)",
 						},
 					}}>
-					<Center width={280} bg='white' borderRadius={"lg"}
-					boxShadow={"2xl"}
-					>
+					<Center
+						width={280}
+						bg='white'
+						borderRadius={"lg"}
+						boxShadow={"2xl"}>
 						<CarSlider width={280} height={218} image={imgArr} />
 					</Center>
 				</Box>
@@ -109,9 +109,9 @@ export default function CardCard({ images,color,title,price,miles }) {
 						<StatHelpText>Feb 12 - Feb 28</StatHelpText>
 						<StatGroup>
 							<Stat>
-								<StatLabel>Miles</StatLabel>
+								<StatLabel>Mileage</StatLabel>
 								<StatNumber>{miles}</StatNumber>
-								<StatHelpText>
+								<StatHelpText mt={1}>
 									<StatArrow type='increase' />
 									{(parseInt(price) / 3).toFixed(2)}%
 								</StatHelpText>
@@ -124,27 +124,25 @@ export default function CardCard({ images,color,title,price,miles }) {
 									fontSize={"xl"}>
 									{newColor}
 								</StatNumber>
-								<StatHelpText>
+								<StatHelpText
+									display={"flex"}
+									alignItems={"center"}
+									pt={2}>
 									<StatArrow type='decrease' />
 									{(parseInt(price) / 7).toFixed(2)}%
-									<Tag
-										size='md'
-										colorScheme='green'
-										ml='3'
-										>
+									<Tag size='sm' colorScheme='green' ml='3'>
 										<TagLabel>Available</TagLabel>
 									</Tag>
 								</StatHelpText>
 							</Stat>
 						</StatGroup>
 					</Stat>
-					<Button
-					
-					>
-						Request More Info
+					<Button>
+						Request More Info &nbsp;&nbsp;
+						<ExternalLinkIcon mx='2px' />
 					</Button>
 				</Stack>
 			</Box>
 		</Center>
-	);
+ );
 }

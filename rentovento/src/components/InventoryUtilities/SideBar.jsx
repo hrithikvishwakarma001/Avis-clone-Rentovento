@@ -11,6 +11,10 @@ import {
 	Input,
 	Checkbox,
 	FormLabel,
+	RadioGroup,
+	Radio,
+	Collapse,
+	Button,
 } from "@chakra-ui/react";
 const SideBar = () => {
 	const locationArray = [
@@ -129,7 +133,7 @@ const SideBar = () => {
 		"25t Premium Plus",
 		"25t Premium Plus PZEV",
 		"25t Premium PZEV",
-	]
+	];
 
 	const CarYearNames = [
 		"2010",
@@ -145,8 +149,8 @@ const SideBar = () => {
 		"2020",
 		"2021",
 		"2022",
-		"2023"
-	]
+		"2023",
+	];
 
 	const CarPrice = [
 		"$10,000 - $19,000 (1297)",
@@ -158,8 +162,8 @@ const SideBar = () => {
 		"$70,000 - $79,000 (19)",
 		"$80,000 - $89,000 (9)",
 		"$90,000 - $99,000 (9)",
-		"$100,000 - $109,000 (9)"
-	]
+		"$100,000 - $109,000 (9)",
+	];
 
 	const CarMileage = [
 		"30,000 or less (282)",
@@ -171,7 +175,7 @@ const SideBar = () => {
 		"90,000 or less (1482)",
 		"100,000 or less (1682)",
 		"110,000 or less (1882)",
-	]
+	];
 
 	const CarColor = [
 		"Black",
@@ -186,10 +190,10 @@ const SideBar = () => {
 		"Red",
 		"Silver",
 		"White",
-		"Yellow"
-	]
+		"Yellow",
+	];
 
-  const Features = [
+	const Features = [
 		"ABS Brakes",
 		"Air Conditioning",
 		"Alloy Wheels",
@@ -234,10 +238,10 @@ const SideBar = () => {
 		"Steering Wheel Mounted Controls",
 		"Subwoofer",
 		"Sun Roof",
-	]
+	];
 
-
-
+	const [show, setShow] = React.useState(false);
+	const handleToggle = () => setShow(!show);
 
 	return (
 		<div>
@@ -251,13 +255,19 @@ const SideBar = () => {
 							<AccordionIcon />
 						</AccordionButton>
 					</h2>
+
 					<AccordionPanel pb={4}>
-						{locationArray.map((location,id) => (
-							<HStack spacing={4} key={id}>
-								<Checkbox />
-								<FormLabel>{location}</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{locationArray.map((location, id) => (
+								<HStack spacing={4} key={id}>
+									<Checkbox />
+									<FormLabel>{location}</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 
@@ -271,18 +281,17 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						<HStack spacing={4}>
-							<Checkbox />
-							<FormLabel>All (3947)</FormLabel>
-						</HStack>
-						<HStack spacing={4}>
-							<Checkbox />
-							<FormLabel>On The Lot (1620)</FormLabel>
-						</HStack>
-						<HStack spacing={4}>
-							<Checkbox />
-							<FormLabel>Ultimate Test Drive (2327)</FormLabel>
-						</HStack>
+						<RadioGroup defaultValue='1'>
+							<Stack>
+								<Radio value='1' isDisabled>
+									All (3947)
+								</Radio>
+								<Radio value='2'>On The Lot (1620)</Radio>
+								<Radio value='3'>
+									Ultimate Test Drive (2327)
+								</Radio>
+							</Stack>
+						</RadioGroup>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -295,15 +304,20 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarBrandNames.map((brand, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>
-									{brand} (
-									{Math.floor(Math.random() * 100 + i)})
-								</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{CarBrandNames.map((brand, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>
+										{brand} (
+										{Math.floor(Math.random() * 100 + i)})
+									</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -337,15 +351,20 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarModelNames.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>
-									{model} (
-									{Math.floor(Math.random() * 100 + i)})
-								</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{CarModelNames.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>
+										{model} (
+										{Math.floor(Math.random() * 100 + i)})
+									</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -358,15 +377,20 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarYearNames.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>
-									{model} (
-									{Math.floor(Math.random() * 100 + i)})
-								</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{CarYearNames.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>
+										{model} (
+										{Math.floor(Math.random() * 100 + i)})
+									</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -379,15 +403,20 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarTrimNames.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>
-									{model} (
-									{Math.floor(Math.random() * 100 + i)})
-								</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{CarTrimNames.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>
+										{model} (
+										{Math.floor(Math.random() * 100 + i)})
+									</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -400,12 +429,12 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarPrice.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>{model}</FormLabel>
-							</HStack>
-						))}
+							{CarPrice.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>{model}</FormLabel>
+								</HStack>
+							))}
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -418,12 +447,17 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{CarColor.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>{model}</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{CarColor.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>{model}</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
@@ -436,12 +470,17 @@ const SideBar = () => {
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						{Features.map((model, i) => (
-							<HStack spacing={4} key={i}>
-								<Checkbox />
-								<FormLabel>{model}</FormLabel>
-							</HStack>
-						))}
+						<Collapse startingHeight={240} in={show}>
+							{Features.map((model, i) => (
+								<HStack spacing={4} key={i}>
+									<Checkbox />
+									<FormLabel>{model}</FormLabel>
+								</HStack>
+							))}
+						</Collapse>
+						<Button size='sm' onClick={handleToggle} mt='1rem'>
+							Show {show ? "Less" : "More"}
+						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>

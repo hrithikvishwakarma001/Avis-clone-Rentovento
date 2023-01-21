@@ -19,19 +19,22 @@ import {
 	Portal,
 	Modal,
 	Badge,
+	AvatarBadge,
+	HStack,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 import ModalExample from "./utilities/ModalExample";
 import Live from "./utilities/Live";
+import { DateContext } from "../context/DateProviderContext";
+import { useContext } from "react";
 
 export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	// const handleModal = () => {
-	//   console.log('handleModal')
-	//   return <Modal />
-	// };
+	const { user, auth } = useContext(DateContext);
+
+	console.log(user, auth);
 	return (
 		<>
 			<Box bg={useColorModeValue("gray.100", "black")} p={1}>
@@ -137,7 +140,6 @@ export default function Navbar() {
 										<Badge colorScheme='purple'>
 											CAR SALE
 										</Badge>
-										<Live />
 									</Flex>
 								</MenuButton>
 							</Menu>
@@ -175,14 +177,28 @@ export default function Navbar() {
 								sm: "none",
 								md: "none",
 								lg: "block",
-							}}>
-							<MenuButton>AVIS PREFERRED</MenuButton>
+							}}
+							justifyContent={"center"}
+							alignItems={"center"}>
+							{user ? (
+								<>
+									<HStack
+									spacing={1}
+									>
+										<Badge colorScheme='green'>
+											{user}
+										</Badge>
+										<Live />
+									</HStack>
+								</>
+							) : (
+								<NavLink to='/login'>
+									<Menu>
+										<MenuButton>SIGN UP</MenuButton>
+									</Menu>
+								</NavLink>
+							)}
 						</Menu>
-						<NavLink to='/login'>
-							<Menu>
-								<MenuButton>SIGN UP</MenuButton>
-							</Menu>
-						</NavLink>
 						<Menu>
 							<ModalExample />
 						</Menu>

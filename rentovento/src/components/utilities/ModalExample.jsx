@@ -27,35 +27,97 @@ import {
 	Flex,
 	Text,
 	useColorModeValue,
+	useToast,
+	Badge,
 } from "@chakra-ui/react";
 import { AiOutlineAmazon } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { DateContext } from "../../context/DateProviderContext";
+import { useContext } from "react";
+import Live from "./Live";
 export default function ModalExample() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { auth, setAuth, setUser } = useContext(DateContext);
 	const chunks = useHighlight({
 		text: "This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service apply. ",
 		query: ["Privacy Policy", "Service apply."],
 	});
 
 	const initialState = {
-		username: "",
+		email: "",
 		password: "",
 		checkbox: false,
 	};
 
 	const [state, setState] = React.useState(initialState);
-  const handlClick = () => {
-		console.log(state)
-		onClose()
-	}
+	const toast = useToast();
+	const handlClick = () => {
+		console.log(state);
+		async function fetchUser() {
+			let res = await axios.get(
+				"https://peat-puzzled-oregano.glitch.me/auth"
+			);
+			const data = await res.data;
+      let count = 0
+			data.forEach((user) => {
+				if (
+					user.email === state.email &&
+					user.password === state.password
+				) {
+					setAuth(true);
+					setUser(user.firstName);
+					setState(initialState);
+					count++
+				} 
+			});
+			if(count === 0){
+				toast({
+					title: "Invalid Credentials.",
+					description: "Please enter correct credentials.",
+					status: "error",
+					duration: 5000,
+					isClosable: true,
+				});
+				setState(initialState);
+			}else{
+				toast({
+					title: "Login Successful.",
+					description: "You are logged in.",
+					status: "success",
+					duration: 5000,
+					isClosable: true,
+				});
+				onClose()
+			}
+		}
+		fetchUser();
+	};
 	return (
 		<>
-			<MenuButton onClick={onOpen}>LOGIN</MenuButton>
-			<Modal
-				// initialFocusRef={initialRef}
-				// finalFocusRef={finalRef}
-				isOpen={isOpen}
-				onClose={onClose}>
+			<Flex cursor='pointer' alignItems='center' justifyContent='center'>
+				{auth ? (
+					<Badge
+						colorScheme='red'
+						cursor='pointer'
+						onClick={() => {
+							setAuth(false);
+							setUser("");
+							toast({
+								title: "Logout Successful.",
+								description: "You are logged out.",
+								status: "success",
+								duration: 5000,
+								isClosable: true,
+							});
+						}}>
+						logout
+					</Badge>
+				) : (
+					<MenuButton onClick={onOpen}>LOGIN</MenuButton>
+				)}
+			</Flex>
+			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent
 					pt='10'
@@ -69,12 +131,12 @@ export default function ModalExample() {
 							<Input
 								type={"text"}
 								h='50'
-								placeholder='Username/Wizard Number'
+								placeholder='email/Wizard Number'
 								bg
 								onChange={(e) => {
 									setState({
 										...state,
-										username: e.target.value,
+										email: e.target.value,
 									});
 								}}
 							/>
@@ -134,7 +196,7 @@ export default function ModalExample() {
 							</Button>
 						</Center>
 						<Flex justifyContent='space-between' color={"#e53e3e"}>
-							<FormLabel>Forgot username?</FormLabel>
+							<FormLabel>Forgot email?</FormLabel>
 							<Center>
 								<Box borderLeft='2px solid gray'>&nbsp;</Box>
 							</Center>

@@ -141,7 +141,7 @@ const MidHomePage = () => {
 							<Card
 								direction={{ base: "row", sm: "column" }}
 								overflow='hidden'
-								variant='outline'
+								bg={useColorModeValue("white", "black")}
 								borderRadius={0}
 								maxW='40rem'>
 								<Image
@@ -205,7 +205,8 @@ const MidHomePage = () => {
 							<Card
 								direction={{ base: "column", sm: "row" }}
 								overflow='hidden'
-								variant='outline'
+								// variant='outline'
+								bg={useColorModeValue("white", "black")}
 								borderRadius={0}
 								w='32rem'
 								h={{ base: "20em", sm: "10em" }}>

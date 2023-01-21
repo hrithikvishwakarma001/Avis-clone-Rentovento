@@ -10,7 +10,6 @@ const Home = () => {
 		<div bg={useColorModeValue("gray.100", "black")}>
 			<WelcomeHome />
 			<MidHomePage />
-			<Footer />
 		</div>
   );
 }
