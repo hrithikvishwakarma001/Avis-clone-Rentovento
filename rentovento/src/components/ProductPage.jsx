@@ -28,7 +28,7 @@ import {
 	Button,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
@@ -38,7 +38,9 @@ import { MdLocalGasStation, MdCheckCircle, MdSettings } from "react-icons/md";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import CardSkeleton from "./InventoryUtilities/CardSkeleton";
 import CardSkeleton2 from "./InventoryUtilities/CardSkeleton2";
+import { DateContext } from "../context/DateProviderContext";
 const ProductPage = () => {
+		const { auth } = useContext(DateContext);
 	const { id } = useParams();
 	const [product, setProduct] = React.useState(null);
 	const nevigate = useNavigate();
@@ -312,7 +314,7 @@ const ProductPage = () => {
 				</Box>
 			</Center>
 			<Center mb={12} mt={-12}>
-				<Button onClick={() => nevigate("/booking")}>
+				<Button onClick={() => auth?nevigate("/booking"):nevigate('/login')}>
 					Continue &nbsp;
 					<ExternalLinkIcon />
 				</Button>
