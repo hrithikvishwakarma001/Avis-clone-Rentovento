@@ -21,10 +21,13 @@ import CarSlider from "./CarSlider";
 import CartQuickLook from "./CartQuickLook";
 import React from "react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 const IMAGE =
 	"https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3459.jpg?w=360";
 
-export default function CardCard({ images,color,title,price,miles }) {
+export default function CardCard({ images,color,title,price,miles,id }) {
+  
+  const nevigate = useNavigate()
 
   const imgArr = []
   for(let x of images){
@@ -137,7 +140,9 @@ export default function CardCard({ images,color,title,price,miles }) {
 							</Stat>
 						</StatGroup>
 					</Stat>
-					<Button>
+					<Button
+					 	onClick={()=>nevigate('/inventory/'+id)}
+					>
 						Request More Info &nbsp;&nbsp;
 						<ExternalLinkIcon mx='2px' />
 					</Button>

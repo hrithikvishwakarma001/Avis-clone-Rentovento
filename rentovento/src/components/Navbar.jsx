@@ -34,7 +34,7 @@ export default function Navbar() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { user, auth } = useContext(DateContext);
 
-	console.log(user, auth);
+	// console.log(user, auth);
 	return (
 		<>
 			<Box bg={useColorModeValue("gray.100", "black")} p={1}>
@@ -45,7 +45,7 @@ export default function Navbar() {
 					<NavLink to='/'>
 						<Box>
 							<Image
-								boxSize='320px'
+								boxSize={{ base: "200px", md: "320px"}}
 								fit='cover'
 								src='/src/assets/RentoVento2.png'
 							/>
@@ -55,13 +55,14 @@ export default function Navbar() {
 						direction={"row"}
 						spacing={5}
 						fontSize={"13px"}
-						position={"relative"}
-						left={220}
+						// position={"relative"}
+						// left={220}
 						display={{
 							base: "none",
 							sm: "none",
 							md: "none",
-							lg: "block",
+							lg: "none",
+							xl: "block",
 						}}>
 						<Menu>
 							<MenuButton>RESERVATIONS</MenuButton>
@@ -74,7 +75,7 @@ export default function Navbar() {
 									<MenuItem>AVIS PRECHECK</MenuItem>
 								</MenuList>
 							</Portal>
-						</Menu>
+						</Menu>px
 						<Menu>
 							<MenuButton>OFFERS</MenuButton>
 							<Portal>
@@ -160,8 +161,6 @@ export default function Navbar() {
 						</Menu>
 					</Stack>
 					<Stack
-						borderLeft={"1px solid gray"}
-						borderRight={"1px solid gray"}
 						pt={6}
 						pb={6}
 						pl={3}

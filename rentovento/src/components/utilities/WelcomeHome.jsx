@@ -22,12 +22,14 @@ import React from "react";
 import { DateContext } from "../../context/DateProviderContext";
 import { AiFillCalendar, AiOutlineInfoCircle } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function WelcomeHome() {
-	const { sDate, eDate } = React.useContext(DateContext);
+	const { sDate, eDate, auth } = React.useContext(DateContext);
 	// console.log("frome welcom page", sDate, eDate);
 	// console.log('frome welcom page',dateRange)
 	const [noneState, setnoneState] = React.useState(true);
+	const nevigate = useNavigate();
 	// console.log('noneState',noneState)
 
 	const country = [
@@ -147,13 +149,26 @@ export default function WelcomeHome() {
 			console.log("state", state);
 			setnoneState((prev) => !prev);
 			setstate(initialState);
-			toast({
-				title: "Thank you for your booking.",
-				description: "We will contact you soon.",
-				status: "success",
-				duration: 9000,
-				isClosable: true,
-			});
+
+			if (auth) {
+				nevigate("/Inventory");
+				toast({
+					title: "Thank you for your Details.",
+					description: "We will contact you soon.",
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				});
+			}else{
+				nevigate("/login");
+				toast({ 
+					title: "Please create your account first.",
+					description: "And login to continue.",
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				});
+			}
 		}
 	};
 	return (
@@ -391,30 +406,31 @@ export default function WelcomeHome() {
 
 							<Button
 								isLoading={noneState ? false : true}
-								loadingText='Wizard Number *'
+								// loadingText='laoding*'
 								bg={useColorModeValue("white", "#2b2a33")}
 								variant='outline'
 								spinnerPlacement='end'
 								borderradius={"none"}>
-								Wizard Number *
+								Wizard No*
 							</Button>
 							<Button
 								isLoading={noneState ? false : true}
-								loadingText='Discounts Code *'
+								// loadingText='Discounts Code *'
+								w={"30%"}
 								bg={useColorModeValue("white", "#2b2a33")}
 								variant='outline'
 								spinnerPlacement='end'
 								borderradius={"none"}>
-								Discounts Code *
+								Discounts*
 							</Button>
 							<Button
 								isLoading={noneState ? false : true}
-								loadingText='Vehicle Type *'
+								// loadingText='Vehicle Type *'
 								bg={useColorModeValue("white", "#2b2a33")}
 								variant='outline'
 								spinnerPlacement='end'
 								borderradius={"none"}>
-								Vehicle Type *
+								Vehicle*
 							</Button>
 						</HStack>
 						<Flex justifyContent='flex-end'>
