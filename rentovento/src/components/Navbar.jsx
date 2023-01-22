@@ -45,9 +45,9 @@ export default function Navbar() {
 					<NavLink to='/'>
 						<Box>
 							<Image
-								boxSize={{ base: "200px", md: "320px"}}
+								boxSize={{ base: "200px", md: "320px" }}
 								fit='cover'
-								src='/src/assets/RentoVento2.png'
+								src='https://gdurl.com/ncot'
 							/>
 						</Box>
 					</NavLink>
@@ -75,7 +75,8 @@ export default function Navbar() {
 									<MenuItem>AVIS PRECHECK</MenuItem>
 								</MenuList>
 							</Portal>
-						</Menu>px
+						</Menu>
+						px
 						<Menu>
 							<MenuButton>OFFERS</MenuButton>
 							<Portal>
@@ -181,9 +182,7 @@ export default function Navbar() {
 							alignItems={"center"}>
 							{user.firstName ? (
 								<>
-									<HStack
-									spacing={1}
-									>
+									<HStack spacing={1}>
 										<Badge colorScheme='green'>
 											{user.firstName}
 										</Badge>
