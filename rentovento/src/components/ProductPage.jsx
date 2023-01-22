@@ -311,12 +311,12 @@ const ProductPage = () => {
 					</VStack>
 				</Box>
 			</Center>
-			{/* <Center mb={12} mt={-12}>
+			<Center mb={12} mt={-12}>
 				<Button onClick={() => nevigate("/booking")}>
 					Continue &nbsp;
 					<ExternalLinkIcon />
 				</Button>
-			</Center> */}
+			</Center>
 		</>
 	);
 };

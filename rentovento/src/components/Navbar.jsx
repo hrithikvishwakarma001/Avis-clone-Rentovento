@@ -179,13 +179,13 @@ export default function Navbar() {
 							}}
 							justifyContent={"center"}
 							alignItems={"center"}>
-							{user ? (
+							{user.firstName ? (
 								<>
 									<HStack
 									spacing={1}
 									>
 										<Badge colorScheme='green'>
-											{user}
+											{user.firstName}
 										</Badge>
 										<Live />
 									</HStack>

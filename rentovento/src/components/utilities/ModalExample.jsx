@@ -69,7 +69,7 @@ export default function ModalExample() {
 				user.password === state.password
 			) {
 				setAuth(true);
-				setUser(user.firstName);
+				setUser(user);
 				setState(initialState);
 
 				count++;
