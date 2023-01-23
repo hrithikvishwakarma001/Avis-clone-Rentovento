@@ -16,6 +16,17 @@
 # Footer
 ![footer](https://user-images.githubusercontent.com/104666876/213939811-ae77d256-d3b8-4e16-958c-7258cf44e650.png)
 
+
+### Functionalities Implemented
+
+1. Login and Signup
+2. Storing the user data
+3. Shows Number of products already Present in Cart
+4. Dynamic Population of Products in Filter Page
+5. In Cart 
+- Select the Quantity, cart value to be modified Accordingly
+- Delete the Product, if not required
+
 ### We're Here For You. 🔥 
 Buying a new car should be fun, rewarding and easy, and we are committed to providing you with service above and beyond what is expected. If you need help, give us a call!
 ### Financing Available at Competitive Rates
