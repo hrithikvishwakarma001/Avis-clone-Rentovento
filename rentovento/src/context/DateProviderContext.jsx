@@ -10,7 +10,9 @@ const DateProviderContext = ({children}) => {
   const [sort, setSort] = React.useState('')
   const [totalCar, setTotalNumberOfCar] = React.useState(0);
   const [auth,setAuth] = React.useState(false)
-  const [user,setUser] = React.useState('')
+  const [user,setUser] = React.useState({})
+	const [book,setBook] = React.useState({})
+
   return (
 		<DateContext.Provider
 			value={{
@@ -31,7 +33,9 @@ const DateProviderContext = ({children}) => {
         auth,
         setAuth,
         user,
-        setUser
+        setUser,
+				book,
+				setBook
 			}}>
 			{children}
 		</DateContext.Provider>

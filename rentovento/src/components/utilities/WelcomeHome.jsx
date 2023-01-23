@@ -25,7 +25,7 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 export default function WelcomeHome() {
-	const { sDate, eDate, auth } = React.useContext(DateContext);
+	const { sDate, eDate, auth,book,setBook } = React.useContext(DateContext);
 	// console.log("frome welcom page", sDate, eDate);
 	// console.log('frome welcom page',dateRange)
 	const [noneState, setnoneState] = React.useState(true);
@@ -147,6 +147,7 @@ export default function WelcomeHome() {
 			});
 		} else {
 			console.log("state", state);
+			setBook(state);
 			setnoneState((prev) => !prev);
 			setstate(initialState);
 

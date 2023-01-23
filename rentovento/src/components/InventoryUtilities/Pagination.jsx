@@ -5,17 +5,17 @@ import { DateContext } from '../../context/DateProviderContext';
 
 const Pagination = ({total}) => {
   	const { setPage, setLimit,page} = React.useContext(DateContext);
-    
+    console.log('page : ', page);
   return (
 		<ButtonGroup>
 			<Button
-				disabled={page === 1}
+				isDisabled={page === 1}
 				data-cy='pagination-first-button'
 				onClick={() => setPage(1)}>
 				First
 			</Button>
 			<Button
-				disabled={page === 1}
+				isDisabled={page === 1}
 				data-cy='pagination-previous-button'
 				onClick={() => setPage(page - 1)}>
 				<ArrowLeftIcon />
@@ -32,13 +32,13 @@ const Pagination = ({total}) => {
 				<option data-cy='pagination-limit-9'>18</option>
 			</Select>
 			<Button
-				disabled={page === total}
+				isDisabled={page === total}
 				data-cy='pagination-next-button'
 				onClick={() => setPage(page + 1)}>
 				<ArrowRightIcon/>
 			</Button>
 			<Button
-				disabled={page === total}
+				isDisabled={page === total}
 				data-cy='pagination-last-button'
 				onClick={() => setPage(total)}>
 				Last

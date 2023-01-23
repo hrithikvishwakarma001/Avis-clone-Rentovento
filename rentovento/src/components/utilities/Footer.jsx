@@ -157,7 +157,7 @@ export default function Footer() {
 						flexGrow: 1,
 						ml: 8,
 					}}>
-					<Image src='/src/assets/RentoVentoFooterPng.png' w={150} />
+					<Image src='https://gdurl.com/Ze-r' w={150} />
 				</Flex>
 				<Text pt={6} fontSize={"sm"} textAlign={"center"}>
 					© 2023 Rentovento Rent A Car System, LLC

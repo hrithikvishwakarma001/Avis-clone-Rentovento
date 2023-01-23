@@ -140,9 +140,7 @@ export default function CardCard({ images,color,title,price,miles,id }) {
 							</Stat>
 						</StatGroup>
 					</Stat>
-					<Button
-					 	onClick={()=>nevigate('/inventory/'+id)}
-					>
+					<Button onClick={() => nevigate("/inventory/" + id)}>
 						Request More Info &nbsp;&nbsp;
 						<ExternalLinkIcon mx='2px' />
 					</Button>

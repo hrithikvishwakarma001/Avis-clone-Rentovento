@@ -39,7 +39,7 @@ import Live from "./Live";
 import AlertDialogBox from "./AlertDialog";
 export default function ModalExample() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const { auth, setAuth, setUser } = useContext(DateContext);
+	const { auth, setAuth, setUser,} = useContext(DateContext);
 	const chunks = useHighlight({
 		text: "This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service apply. ",
 		query: ["Privacy Policy", "Service apply."],
@@ -69,8 +69,9 @@ export default function ModalExample() {
 				user.password === state.password
 			) {
 				setAuth(true);
-				setUser(user.firstName);
+				setUser(user);
 				setState(initialState);
+
 				count++;
 			}
 		});
@@ -103,12 +104,6 @@ export default function ModalExample() {
 		<>
 			<Flex cursor='pointer' alignItems='center' justifyContent='center'>
 				{auth ? (
-					// <Badge
-					// 	colorScheme='red'
-					// 	cursor='pointer'
-					// 	onClick={handleLogout}>
-					// 	logout
-					// </Badge>
 					<AlertDialogBox />
 				) : (
 					<MenuButton onClick={onOpen}>LOGIN</MenuButton>
