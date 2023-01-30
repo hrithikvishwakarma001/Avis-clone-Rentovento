@@ -23,6 +23,7 @@ import { DateContext } from "../../context/DateProviderContext";
 import { AiFillCalendar, AiOutlineInfoCircle } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import AdminPage from "../AdminPage";
 
 export default function WelcomeHome() {
 	const { sDate, eDate, auth,book,setBook } = React.useContext(DateContext);

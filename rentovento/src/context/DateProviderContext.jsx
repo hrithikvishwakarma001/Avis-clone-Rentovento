@@ -12,7 +12,9 @@ const DateProviderContext = ({children}) => {
   const [auth,setAuth] = React.useState(false)
   const [user,setUser] = React.useState({})
 	const [book,setBook] = React.useState({})
-
+	const [userData,setUserData] = React.useState({})
+	const [adminAuth, setAdminAuth] = React.useState(false);
+  const [bookData, setBookData] = React.useState([])
   return (
 		<DateContext.Provider
 			value={{
@@ -30,12 +32,18 @@ const DateProviderContext = ({children}) => {
 				setSort,
 				setTotalNumberOfCar,
 				totalCar,
-        auth,
-        setAuth,
-        user,
-        setUser,
+				auth,
+				setAuth,
+				user,
+				setUser,
 				book,
-				setBook
+				setBook,
+				userData,
+				setUserData,
+				adminAuth,
+				setAdminAuth,
+				bookData,
+				setBookData
 			}}>
 			{children}
 		</DateContext.Provider>

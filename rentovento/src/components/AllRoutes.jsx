@@ -6,7 +6,7 @@ import Booking from './InventoryUtilities/Booking';
 import Login from './Login';
 import NotFound from './NotFound';
 import ProductPage from './ProductPage';
-
+import AdminPage from './AdminPage';
 const AllRoutes = () => {
   return (
     <div>
@@ -16,9 +16,9 @@ const AllRoutes = () => {
         <Route path="/inventory" element={<Inventory/>}/>
         <Route path="/booking" element={<Booking/>} />
         <Route path="/inventory/:id" element={<ProductPage/>}/>
+        <Route path="/admin" element={<AdminPage/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
-      
     </div>
   )
 }

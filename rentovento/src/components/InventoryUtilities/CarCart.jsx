@@ -49,7 +49,7 @@ const CarCart = () => {
 		dispatch({ type: "FETCH_INIT" });
 		try {
 			let res = await axios.get(
-				`https://heavenly-brief-antarctopelta.glitch.me/cars?_page=${page}&_limit=${limit}&q=${search}&_sort=${sortName}&_order=${sortType}`
+				`https://peat-puzzled-oregano.glitch.me/cars?_page=${page}&_limit=${limit}&q=${search}&_sort=${sortName}&_order=${sortType}`
 			);
 			// console.log("res.data : ", res.data);
 			setTotal(Math.ceil(res.headers["x-total-count"] / limit));
