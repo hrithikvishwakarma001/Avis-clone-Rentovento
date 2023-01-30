@@ -40,15 +40,16 @@ import CardSkeleton from "./InventoryUtilities/CardSkeleton";
 import CardSkeleton2 from "./InventoryUtilities/CardSkeleton2";
 import { DateContext } from "../context/DateProviderContext";
 const ProductPage = () => {
-		const { auth } = useContext(DateContext);
+		const { auth,bookData,setBookData } = useContext(DateContext);
 	const { id } = useParams();
 	const [product, setProduct] = React.useState(null);
 	const nevigate = useNavigate();
 	async function fetchProduct(id) {
 		let res = await axios.get(
-			`https://heavenly-brief-antarctopelta.glitch.me/cars/${id}`
+			`https://peat-puzzled-oregano.glitch.me/cars/${id}`
 		);
 		setProduct(res.data);
+		setBookData([...bookData,res.data])
 	}
 	useEffect(() => {
 		fetchProduct(id);

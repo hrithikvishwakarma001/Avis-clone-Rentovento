@@ -41,7 +41,7 @@ const Login = () => {
 		const { name, value } = e.target;
 		setState({ ...state, [name]: value });
 	};
- 
+
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
@@ -85,7 +85,7 @@ const Login = () => {
 			});
 			postUserData();
 			// console.log(state);
-			 setTimeout(() => {
+			setTimeout(() => {
 				navigate("/");
 			}, 3000);
 		}

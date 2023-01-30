@@ -28,6 +28,7 @@ import ModalExample from "./utilities/ModalExample";
 import Live from "./utilities/Live";
 import { DateContext } from "../context/DateProviderContext";
 import { useContext } from "react";
+import AdminLogin from "./utilities/AdminLogin";
 
 export default function Navbar() {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -199,6 +200,9 @@ export default function Navbar() {
 						</Menu>
 						<Menu>
 							<ModalExample />
+						</Menu>
+						<Menu>
+							<AdminLogin/>
 						</Menu>
 					</Stack>
 					<Flex alignItems={"center"} mr={"15px"}>
